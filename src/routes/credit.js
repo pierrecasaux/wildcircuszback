@@ -4,9 +4,9 @@ const router = express.Router({ mergeParams: true });
 
 // All credit
 router.get("/", (req, res) => {
-    connection.query("SELECT * from credit", (err, results) => {
+    connection.query("SELECT * from credit ORDER BY total DESC", (err, results) => {
         if (err) {
-            res.status(500).send("Error retrieving credit");
+            res.status(500).send(err);
         } else {
             res.json(results);
         }
